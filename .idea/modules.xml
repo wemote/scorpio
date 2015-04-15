@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/scorpio.iml" filepath="$PROJECT_DIR$/scorpio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scorpio-core/scorpio-core.iml" filepath="$PROJECT_DIR$/scorpio-core/scorpio-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scorpio-test/scorpio-test.iml" filepath="$PROJECT_DIR$/scorpio-test/scorpio-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scorpio-utils/scorpio-utils.iml" filepath="$PROJECT_DIR$/scorpio-utils/scorpio-utils.iml" />
+    </modules>
+  </component>
+</project>
