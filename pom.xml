@@ -7,7 +7,7 @@
     <groupId>com.wemote</groupId>
     <artifactId>scorpio</artifactId>
     <packaging>pom</packaging>
-    <version>0.1</version>
+    <version>0.2</version>
     <modules>
         <module>scorpio-core</module>
         <module>scorpio-utils</module>
@@ -24,7 +24,7 @@
         <shiro.version>1.2.3</shiro.version>
 
         <!-- My libraries -->
-        <scorpio.version>0.1</scorpio.version>
+        <scorpio.version>0.2</scorpio.version>
 
         <!-- Aop libraries -->
         <aspectj.version>1.8.4</aspectj.version>
@@ -40,6 +40,7 @@
         <guava.version>18.0</guava.version>
         <joda-time.version>2.5</joda-time.version>
         <jackson.version>2.4.4</jackson.version>
+        <fastjson.version>1.2.4</fastjson.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <xstream.version>1.4.3</xstream.version>
@@ -50,6 +51,8 @@
         <jolokia.version>1.2.3</jolokia.version>
         <hystrix.version>1.3.16</hystrix.version>
         <javasimon.version>3.5.2</javasimon.version>
+        <xstream.version>1.4.8</xstream.version>
+
 
         <!-- Data store libraries -->
         <hibernate.version>4.3.7.Final</hibernate.version>
@@ -72,6 +75,10 @@
         <!-- Message libraries -->
         <activemq.version>5.7.0</activemq.version>
 
+        <!-- Http libraries -->
+        <httpcore.version>4.4.1</httpcore.version>
+        <httpasyncclient.version>4.1</httpasyncclient.version>
+
         <!-- Web libraries -->
         <jetty.version>8.1.16.v20140903</jetty.version>
         <javax.validation-api.version>1.1.0.Final</javax.validation-api.version>
@@ -79,6 +86,7 @@
         <velocity.version>1.7</velocity.version>
         <velocity.tools.version>1.0rc</velocity.tools.version>
         <sitemesh.version>2.4.2</sitemesh.version>
+        <javax.inject.version>1</javax.inject.version>
 
         <!-- Test libraries-->
         <junit.version>4.11</junit.version>
@@ -218,6 +226,64 @@
             </dependency>
             <!-- Persistence end -->
 
+            <!-- Http start -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpcore.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore-nio</artifactId>
+                <version>${httpcore.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcore.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcore.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>${httpasyncclient.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Http end -->
+
             <!-- Web begin -->
             <!-- Spring -->
             <dependency>
@@ -237,9 +303,14 @@
             <!-- J2EE web spec -->
             <!-- update to servlet 3.0 for spring 4.0 MockHttpServletRequest  -->
             <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
+                <version>3.1.0</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -446,6 +517,11 @@
                 <artifactId>jackson-module-jaxb-annotations</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
             <!-- Json end -->
 
             <!-- Xml begin -->
@@ -466,6 +542,11 @@
                 <groupId>jaxen</groupId>
                 <artifactId>jaxen</artifactId>
                 <version>1.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${xstream.version}</version>
             </dependency>
             <!-- Xml end -->
 
@@ -595,43 +676,6 @@
                     <exclusion>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <!-- httpclient -->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>fluent-hc</artifactId>
-                <version>${httpclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>4.3.2</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
