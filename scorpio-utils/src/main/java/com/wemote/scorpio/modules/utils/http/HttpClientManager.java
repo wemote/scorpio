@@ -1,7 +1,6 @@
 package com.wemote.scorpio.modules.utils.http;
 
 import com.google.common.collect.Lists;
-import com.wemote.sdk.wechat.Const;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -96,7 +95,6 @@ public class HttpClientManager {
      */
     public String doPost(final String reqURL, final Map<String, String> params, final String encoding) throws IOException {
         final HttpPost httpPost = buildHttpPostRequest(reqURL, params, encoding);
-        httpPost.setHeader("User-Agent", Const.USER_AGENT);
         if (this.gzip == true) {
             httpPost.setHeader("Accept-Encoding", "gzip");
         }
@@ -138,7 +136,6 @@ public class HttpClientManager {
      */
     public String doGet(final String reqURL, final String encoding, final boolean isPB) throws IOException {
         final HttpGet httpget = new HttpGet(reqURL);
-        httpget.setHeader("User-Agent", Const.USER_AGENT);
         if (this.gzip == true) {
             httpget.setHeader("Accept-Encoding", "gzip");
         }
