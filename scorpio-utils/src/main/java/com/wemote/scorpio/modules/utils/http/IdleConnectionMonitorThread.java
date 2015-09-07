@@ -30,7 +30,7 @@ public class IdleConnectionMonitorThread extends Thread {
                 synchronized (this) {
                     this.wait(1000);
                     // Close expired connections
-                    log.info("Thread {} closeExpiredConnections & closeIdleConnections begin...",
+                    log.debug("Thread {} closeExpiredConnections & closeIdleConnections begin...",
                             Thread.currentThread().getName());
                     connMgr.closeExpiredConnections();
                     // Optionally, close connections
